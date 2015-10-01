@@ -1,0 +1,58 @@
+{
+    "title": "Food response schema",
+    "type": "object",
+    "properties": {
+        "foodList": {
+            "description": "a list of food items",
+            "type": "array",
+            "items": {
+                "description": "food item and its content per 100 gram",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "Id of food item",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Name of food to get",
+                        "type": "string"
+                    },
+                    "energyKcal": {
+                        "description": "Energy of food in calories (kCal)",
+                        "type": "float"
+                    },
+                    "energyKj": {
+                        "description": "Energy of food in kilojoule (kJ)",
+                        "type": "float"
+                    },
+                    "carbs": {
+                        "description": "Amount of carbohydrates",
+                        "type": "float"
+                    },
+                    "fat": {
+                        "description": "Amount of fat",
+                        "type": "float"
+                    },
+                    "protein": {
+                        "description": "Amount of protein",
+                        "type": "float"
+                    },
+                    "fiber": {
+                        "description": "Amount of fiber",
+                        "type": "float"
+                    },
+                    "water": {
+                        "description": "Amount of water",
+                        "type": "float"
+                    },
+                    "alcohol": {
+                        "description": "Amount of alcohol",
+                        "type": "float"
+                    }
+                },
+                "required": ["id", "name", "energyKcal"]
+            }
+        }
+    },
+    "required": ["foods"]
+}

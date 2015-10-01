@@ -1,0 +1,26 @@
+{
+    "title": "Food ID response schema",
+    "type": "object",
+    "properties": {
+        "foodList": {
+            "description": "a map of food items and their id's",
+            "type": "array",
+            "items": {
+                "description": "the food items name and id",
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Name of food to get",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Id of food item",
+                        "type": "integer"
+                    }
+                },
+                "required": ["name", "id"]
+            }
+        }
+    },
+    "required": ["foods"]
+}

@@ -1,0 +1,15 @@
+{
+    "title": "Food ID request schema",
+    "type": "object",
+    "properties": {
+        "foodIdList": {
+            "description": "an array of food item id's",
+            "type": "array",
+            "items": {
+                "description": "Id of food to get",
+                "type": "integer"
+            }
+        }
+    },
+    "required": ["foodIdList"]
+}
