@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ejb.Local;
 import se.vonbargen.dennis.weightnut.api.model.Food;
 import se.vonbargen.dennis.weightnut.api.model.Meal;
+import se.vonbargen.dennis.weightnut.api.model.SystemParameter;
 
 /**
  *
@@ -17,12 +18,16 @@ import se.vonbargen.dennis.weightnut.api.model.Meal;
 @Local
 public interface DBInterfaceLocal {
     
+    //System
     public void persist(Object object);
+    public SystemParameter getParameter(String parameter);
     
+    //Food
     public List<Long> getFoodId(List<String> foods);
     public List<Food> getAllFoodId();
     public List<Food> getFoods(List<Long> foods, int offset, int maxResults);
     
+    //Meal
     public List<Long> getMealId(List<String> meals);
     public List<Meal> getAllMealId();
     public List<Meal> getMeals(List<Long> meals, int offset, int maxResults);

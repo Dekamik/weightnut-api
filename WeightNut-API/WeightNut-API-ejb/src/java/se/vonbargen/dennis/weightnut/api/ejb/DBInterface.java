@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import se.vonbargen.dennis.weightnut.api.model.Food;
 import se.vonbargen.dennis.weightnut.api.model.Meal;
+import se.vonbargen.dennis.weightnut.api.model.SystemParameter;
 
 /**
  *
@@ -30,6 +31,15 @@ public class DBInterface implements DBInterfaceLocal {
     @Override
     public void persist(Object object) {
         em.persist(object);
+    }
+    
+    @Override
+    public SystemParameter getParameter(String parameter) {
+        logger.log(Level.FINER, "getParameter({0})", parameter);
+        
+        return em.createNamedQuery("SystemParameter.findByParam", SystemParameter.class)
+                .setParameter("param", parameter)
+                .getSingleResult();
     }
 
     @Override
