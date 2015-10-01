@@ -6,6 +6,7 @@
 package se.vonbargen.dennis.weightnut.api.ejb;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.vonbargen.dennis.weightnut.api.ejb.local.DBInterfaceLocal;
 import javax.ejb.Stateless;
@@ -33,6 +34,8 @@ public class DBInterface implements DBInterfaceLocal {
 
     @Override
     public List<Long> getFoodId(List<String> foods) {
+        logger.log(Level.FINER, "getFoodId(List.size({0}))", foods.size());
+        
         return em.createQuery("SELECT f.idfood "
                 + "FROM Food f "
                 + "WHERE f.name IN :foods", Long.class)
@@ -42,6 +45,8 @@ public class DBInterface implements DBInterfaceLocal {
 
     @Override
     public List<Food> getAllFoodId() {
+        logger.log(Level.FINER, "getAllFoodId()");
+        
         return em.createQuery("SELECT f.idfood "
                 + "FROM Food f ", Food.class)
                 .getResultList();
@@ -49,6 +54,9 @@ public class DBInterface implements DBInterfaceLocal {
 
     @Override
     public List<Food> getFoods(List<Long> foods, int offset, int maxResults) {
+        logger.log(Level.FINER, "getFoods(List.size({0}), {1}, {2})", 
+                new Object[]{foods.size(), offset, maxResults});
+        
         return em.createQuery("SELECT f "
                 + "FROM Food f "
                 + "WHERE f.idfood IN :foods", Food.class)
@@ -60,6 +68,8 @@ public class DBInterface implements DBInterfaceLocal {
 
     @Override
     public List<Long> getMealId(List<String> meals) {
+        logger.log(Level.FINER, "getMealId(List.size({0}))", meals.size());
+        
         return em.createQuery("SELECT m.idmeal "
                 + "FROM Meal m "
                 + "WHERE m.mealName IN :meals", Long.class)
@@ -69,6 +79,8 @@ public class DBInterface implements DBInterfaceLocal {
 
     @Override
     public List<Meal> getAllMealId() {
+        logger.log(Level.FINER, "getAllMealId()");
+        
         return em.createQuery("SELECT m.idmeal "
                 + "FROM Meal m ", Meal.class)
                 .getResultList();
@@ -76,6 +88,9 @@ public class DBInterface implements DBInterfaceLocal {
 
     @Override
     public List<Meal> getMeals(List<Long> meals, int offset, int maxResults) {
+        logger.log(Level.FINER, "getMeals(List.size({0}), {1}, {2})",
+                new Object[]{meals.size(), offset, maxResults});
+        
         return em.createQuery("SELECT m "
                 + "FROM Meal m "
                 + "WHERE m.idmeal IN :meals", Meal.class)
